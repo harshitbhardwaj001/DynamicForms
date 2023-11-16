@@ -1,0 +1,19 @@
+.list_item{
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.list_item:hover{
+    background-color: #F4F4F9;
+    border-radius: 0 20px 20px 0;
+    color: black;
+}
+.list_item1{
+    background-color: #cbcbf1;
+    border-radius: 20px 20px 20px 20px;
+    margin-right: 10px;
+}
+.list_item1:hover{
+    background-color: #F4F4F9;
+    border-radius: 0 20px 20px 0;
+    color: black;
+}
