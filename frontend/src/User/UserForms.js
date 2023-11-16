@@ -5,7 +5,7 @@ import Header from "./Header";
 
 function UserForms() {
   const [formData, setFormData] = useState(null);
-  const [formName, setFormName] = useState(null);
+  const [formDesc, setFormDesc] = useState(null);
   const { f_id } = useParams();
 
   useEffect(() => {
@@ -14,7 +14,7 @@ function UserForms() {
       .then((res) => {
         const questionsString = JSON.parse(res.data.questions);
         const questionsObject = JSON.parse(questionsString);
-        setFormName(res.data.doc_name);
+        setFormDesc(res.data.doc_desc);
         setFormData({ ...res.data, questions: questionsObject });
       })
       .catch((err) => console.log(err));
@@ -48,8 +48,8 @@ function UserForms() {
   return (
     <>
       <Header />
-      <div className="d-flex flex-column vh-100 bg-primary p-5 text-white">
-        <h1 className="text-dark">{formName}</h1>
+      <div className="d-flex flex-column vh-4000 bg-primary p-5 text-white">
+        <h1 className="text-dark mb-5">{formDesc}</h1>
         {formData ? (
           <form onSubmit={handleSubmit}>
             {formData.questions.map((question, index) => (

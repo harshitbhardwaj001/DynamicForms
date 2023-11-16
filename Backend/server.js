@@ -71,11 +71,40 @@ app.get('/userForms', (req, res) => {
     })
 })
 
+app.get('/userResponse/:f_id', (req, res) => {
+    var f_id = req.params.f_id;
+    const sql = "SELECT * FROM responses WHERE `f_id` = ?";
+    db.query(sql, [f_id], (err,data) => {
+        if (err) {
+            return res.json(err);
+        }
+        res.send(data);
+    })
+})
+
 app.get('/formdata/:f_id', (req, res) => {
     var f_id = req.params.f_id;
     const sql = "SELECT * FROM form WHERE `f_id` = ?";
 
     db.query(sql, [f_id], (err, data) => {
+        if (err) {
+            console.error("Error executing query: ", err);
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
+
+        if (data.length === 0) {
+            return res.status(404).json({ error: "Form not found" });
+        }
+
+        res.status(200).json(data[0]);
+    });
+});
+
+app.get('/responsedata/:r_id', (req, res) => {
+    var r_id = req.params.r_id;
+    const sql = "SELECT * FROM responses WHERE `r_id` = ?";
+
+    db.query(sql, [r_id], (err, data) => {
         if (err) {
             console.error("Error executing query: ", err);
             return res.status(500).json({ error: "Internal Server Error" });

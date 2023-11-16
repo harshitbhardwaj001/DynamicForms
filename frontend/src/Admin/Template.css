@@ -13,6 +13,26 @@
     justify-content: space-between;
 }
 
+.responses {
+    margin-left: 180px;
+}
+
+.responses button {
+    background-color: #202124;
+    color: #F4F4F9;
+    border-radius: 8px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.responses button:hover{
+    background-color: #fff;
+    color: #202124;
+    transition: ease-in-out 0.2s;
+}
+
 .template_right{
     display: flex;
 }

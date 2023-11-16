@@ -7,7 +7,7 @@ import Blank from '../images/Blank.png'
 import Serv from '../images/Server.jpg'
 import Web from '../images/Web.jpg'
 import {v4 as uuid} from 'uuid'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 // export let id_ = null;
@@ -32,7 +32,7 @@ function Template() {
             <div className='left'>
                 <span style={{fontSize:"16px", color:"#202124"}}>Start a new form</span>
             </div>
-            <div className='right'>
+            <div className='template_right'>
                 <div className='gallery_button'>
                     Template Gallery
                     <UnfoldMoreIcon fontSize='small'/>
@@ -61,6 +61,9 @@ function Template() {
             </div>
             <p className='card_title1'>Compliant Website <br /> Form</p>
             </div>
+        </div>
+        <div className='responses'>
+            <Link to="/responses"><button>Responses</button></Link>
         </div>
     </div>
   )
