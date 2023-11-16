@@ -58,9 +58,18 @@
 
 .doc_card_content{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
-    padding-top: 18px;
+    /* align-items: center; */
+    padding-top: 15px;
+}
+
+.doc_card_content i :hover{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 15px;
+    height: 20px;
+    color: white;
+    border-radius: 500px;
 }
 
 .doc_content{

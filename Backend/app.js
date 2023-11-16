@@ -3,6 +3,7 @@
 
 // Importing essentials
 const fs = require('fs');
+const path = require('path');
 const express = require('express');
 var cors = require('cors');
 var bodyParser = require('body-parser');
@@ -37,6 +38,21 @@ app.post(`/add_temp_questions/:doc_id`, (req,res)=>{
     let data = JSON.stringify(docs_data);
     fs.writeFileSync(`files2/${name}.json`, data)
 })
+
+app.delete('/delete-file/:filename', (req, res) => {
+    let { filename } = req.params;
+    const filePath = path.join(__dirname, 'files', filename);
+    console.log('File Path:', filePath);
+
+    try {
+        fs.unlinkSync(filePath);
+        console.log('File Deleted:', filename);
+        res.status(200).json({ success: true, message: 'File deleted successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+});
  
 
 const readData = (docId, res) => {
@@ -75,10 +91,6 @@ app.get("/data/:doc_id", (req, res) => {
     });
 });
 
-
-// Path Initialization
-const path = require('path');
-
 // Get API for fetching file names and maintaining in mainbody
 app.get("/get_all_filenames", (req, res)=>{
 
@@ -91,6 +103,8 @@ app.get("/get_all_filenames", (req, res)=>{
         res.send(files);
     });
 });
+
+   
 
 
 // Initializing port for node 

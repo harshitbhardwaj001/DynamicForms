@@ -69,7 +69,7 @@ function login() {
                       </div>
                       <button type='submit' className='btn btn-success w-100 rounded-0'><strong>Login</strong></button>
                       <p></p>
-                      <Link to="/register" className='btn btn-default border w-100 bg-light rounded-0 text-decoration-none'>Register</Link>
+                      {/* <Link to="/register" className='btn btn-default border w-100 bg-light rounded-0 text-decoration-none'>Register</Link> */}
                   </form>
               </div>
           </div></>
