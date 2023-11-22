@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
+import "./userForm.css"
 
 function UserForms() {
   const [formData, setFormData] = useState(null);
@@ -13,6 +14,7 @@ function UserForms() {
       .get(`http://localhost:8081/formdata/${f_id}`)
       .then((res) => {
         const questionsString = JSON.parse(res.data.questions);
+        console.log(res);
         const questionsObject = JSON.parse(questionsString);
         setFormDesc(res.data.doc_desc);
         setFormData({ ...res.data, questions: questionsObject });
@@ -48,8 +50,9 @@ function UserForms() {
   return (
     <>
       <Header />
-      <div className="d-flex flex-column vh-4000 bg-primary p-5 text-white">
-        <h1 className="text-dark mb-5">{formDesc}</h1>
+      <div className="d-flex flex-column vh-1000 bg-primary p-5 text-white">
+        <h1 className="text-dark mb-3">{formDesc}</h1>
+        <h6 className="text-dark mb-5">(*) - Required Fields</h6>
         {formData ? (
           <form onSubmit={handleSubmit}>
             {formData.questions.map((question, index) => (
@@ -58,15 +61,22 @@ function UserForms() {
                 className="d-flex justify-content-start mb-4 mt-4"
               >
                 <label className="w-50 mb-2 fs-5">
-                  {question.questionText} :
+                  {question.questionText}
+                  {question.required ? "*" : ""} :
                 </label>
 
                 {question.questionType === "radio" ? (
                   <select
                     name={`question_${index}`}
+                    required={question.required}
                     onChange={handleInputChange}
                     className="px-3"
+                    defaultValue=""
                   >
+                    <option value="">
+                      {" "}
+                      -- select an option --{" "}
+                    </option>
                     {question.options.map((option, optionIndex) => (
                       <option key={optionIndex} value={option.optionText}>
                         {option.optionText}
@@ -83,6 +93,7 @@ function UserForms() {
                           name={`question_${index}`}
                           onChange={handleInputChange}
                           className="px-3"
+                          required={question.required}
                         />
                         <label htmlFor={`question_${index}_${optionIndex}`}>
                           {option.optionText}
@@ -94,9 +105,18 @@ function UserForms() {
               </div>
             ))}
             <p className="fs-5">Remarks :</p>
-            <textarea maxLength="100" type="text" className="w-100 h-50" name="Remarks" onChange={handleInputChange}/> <br />
+            <textarea
+              maxLength="100"
+              type="text"
+              className="w-100 h-50"
+              name="Remarks"
+              onChange={handleInputChange}
+            />{" "}
             <br />
-            <button type="submit" className="px-5 py-2">Submit</button>
+            <br />
+            <button type="submit" className="px-5 py-2">
+              Submit
+            </button>
           </form>
         ) : (
           <p>Loading form data...</p>

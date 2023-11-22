@@ -16,8 +16,8 @@ function Header() {
   return (
     <div className='header'>
         <div className='header_info'>
-            <TemporaryDrawer />
-            <img src={csirlogo} style={{height:"40px",width:"40px" }} className='csir logo' />
+            {/* <TemporaryDrawer /> */}
+            <img src={csirlogo} style={{height:"40px",width:"40px", marginLeft:"20px" }} className='csir logo' />
             <div className='info'>
                 <strong>Data Collection Forms</strong>
             </div>
@@ -29,9 +29,6 @@ function Header() {
                 <SearchIcon sx={{ fontSize: 30 }}/> 
             </IconButton>
             <input type="text" name="search" placeholder='search' />
-        </div>
-        <div className='header_right'>
-
         </div>
         <div className='logout' style={{ fontSize: 20,marginRight:"20px" }}>
             Logout

@@ -11,7 +11,7 @@ import UserForms from './User/UserForms'
 import Userform from './Admin/Userform'
 import Responses from './Admin/Responses'
 import AdminForm from './Admin/AdminForm'
-import IndividualResponse from './Admin/IndividualResponse'
+import IndividualResponse from './Admin/IndividualResponses'
 
 function App() {
   return (
