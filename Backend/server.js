@@ -52,17 +52,8 @@ app.post('/forms', (req, res) => {
     });
 });
 
-const date = new Date();
-
-let day = date.getDate();
-let month = date.getMonth() + 1;
-let year = date.getFullYear();
-
-// This arrangement can be altered based on how we want the date's format to appear.
-let currentDate = `${year}-${month}-${day}`;
-
 app.get('/userForms', (req, res) => {
-    const sql = "SELECT * FROM form where end_date >= '" + currentDate + "'";
+    const sql = "SELECT * FROM form";
     db.query(sql, (err,data) => {
         if (err) {
             return res.json(err);
@@ -79,6 +70,31 @@ app.get('/userResponse/:f_id', (req, res) => {
             return res.json(err);
         }
         res.send(data);
+    })
+})
+
+app.get('/userResponse/:f_id/:lab_id', (req, res) => {
+    var f_id = req.params.f_id;
+    var lab_id = req.params.lab_id;
+    const sql = "SELECT * FROM responses WHERE `f_id` = ? AND `lab_id` = ?";
+    db.query(sql, [f_id, lab_id], (err,data) => {
+        if (err) {
+            return res.json(err);
+        }
+        res.send(data[0]);
+    })
+})
+
+app.post('/userResponse/:f_id/:lab_id', (req, res) => {
+    var f_id = req.params.f_id;
+    var lab_id = req.params.lab_id;
+    var responses = JSON.stringify(req.body.response)
+    const sql = "UPDATE responses SET responses = ? WHERE `f_id` = ? AND `lab_id` = ?";
+    db.query(sql, [responses, f_id, lab_id], (err,data) => {
+        if (err) {
+            return res.json(err);
+        }
+        res.send("Success");
     })
 })
 
