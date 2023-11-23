@@ -8,7 +8,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 export const signOut = () => {
     window.localStorage.removeItem("isAdmin");
-    window.location.href = "/login";
+    window.location.href = "/";
 }
 
 

@@ -12,12 +12,13 @@ import Userform from './Admin/Userform'
 import Responses from './Admin/Responses'
 import AdminForm from './Admin/AdminForm'
 import IndividualResponse from './Admin/IndividualResponses'
+import Entry from './User/Entry'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login />} />
+        <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/privateAdmin' element={<PrivateAdmin />}>
           <Route path='adminhome' element={<AdminHome />} />
@@ -31,6 +32,7 @@ function App() {
         <Route path='/responses' element={<Responses />} />
         <Route path='/adminForm/:f_id' element={<AdminForm />} />
         <Route path='/individualResponse/:r_id' element={<IndividualResponse />} />
+        <Route path='/userForm/:f_id/:lab_id' element={<Entry />} />
       </Routes>
     </BrowserRouter>
   )

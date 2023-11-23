@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Header from "./Header";
 import "./userForm.css"
 
+
 function UserForms() {
   const [formData, setFormData] = useState(null);
   const [formDesc, setFormDesc] = useState(null);
@@ -39,12 +40,18 @@ function UserForms() {
       response: jsonData,
     };
 
-    axios
+    window.localStorage.getItem(`submitted${formData.f_id}`) 
+  ? axios
+      .post(`http://localhost:8081/userResponse/${f_id}/${window.localStorage.getItem("lab_id")}`, postData)
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err))
+  : axios
       .post(`http://localhost:8081/response/${f_id}`, postData)
       .then((res) => console.log(res))
       .catch((err) => console.error(err));
 
-    console.log("Form submitted");
+    window.alert("Form submitted");
+    window.localStorage.setItem(`submitted${formData.f_id}`, true)
   };
 
   return (

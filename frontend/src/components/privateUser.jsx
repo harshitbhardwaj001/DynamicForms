@@ -6,7 +6,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 function privateUser() {
   const loggedIn = window.localStorage.getItem("isUser");
   console.log(loggedIn, "login");
-  return loggedIn ? <Outlet /> : <Navigate to={"/login"} />
+  return loggedIn ? <Outlet /> : <Navigate to={"/"} />
 }
 
 export default privateUser
