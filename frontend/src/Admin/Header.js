@@ -14,23 +14,17 @@ export const signOut = () => {
 
 function Header() {
   return (
-    <div className='header'>
+    <div className='header1'>
         <div className='header_info'>
             {/* <TemporaryDrawer /> */}
-            <img src={csirlogo} style={{height:"40px",width:"40px", marginLeft:"20px" }} className='csir logo' />
+            {/* <img src={csirlogo} style={{height:"40px",width:"40px", marginLeft:"20px" }} className='csir logo' /> */}
             <div className='info'>
-                <strong>Data Collection Forms</strong>
+                <strong>Admin Dashboard</strong>
             </div>
             
         </div>
         
-        <div className='header_search'>
-            <IconButton>
-                <SearchIcon sx={{ fontSize: 30 }}/> 
-            </IconButton>
-            <input type="text" name="search" placeholder='search' />
-        </div>
-        <div className='logout' style={{ fontSize: 20,marginRight:"20px" }}>
+        <div className='logout' style={{ fontSize: 20}}>
             Logout
             <IconButton sx={{color:"black"}}  onClick={signOut} >
             <LogoutIcon sx={{ fontSize: 30,marginRight:"15px", marginLeft:"12px" }}/> 

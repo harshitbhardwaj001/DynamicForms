@@ -18,7 +18,7 @@ function forms() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8081/userForms")
+      .get("http://localhost:8081/active")
       .then((res) => setInventory(res.data))
 
       // .then(res=> console.log(res.data))
@@ -26,14 +26,18 @@ function forms() {
   }, []);
 
   return (
-    <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
-      <div className="d-flex w-auto bg-white rounded p-3">
+    <div className="d-flex vh-auto bg-light flex-column justify-content-center align-items-center">
+    <h1 className="mt-5 mb-5">Active Forms</h1>
+      <div className="d-flex w-100 bg-dark rounded p-3">
         {/* <Link to="/create" className='btn btn-success'>Add +</Link> */}
-        <table className="table m-3">
+        <table className="table m-3 table-dark">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Description</th>
+              <th>Form Name</th>
+              <th>Form Description</th>
+              <th>Last date to submit</th>
+              <th>Fill Form</th>
+              <th>View Entry</th>
             </tr>
           </thead>
           <tbody>
@@ -41,21 +45,21 @@ function forms() {
               <tr key={i}>
                 <td>{data.doc_name}</td>
                 <td>{data.doc_desc}</td>
+                <td>{(data.end_date).substr(0, 10)}</td>
                 <td>
                   <button
-                    className="btn btn-primary"
-                    disabled={data.end_date < currentDate}
+                    className="btn btn-light"
                     onClick={(e) => {
                       e.preventDefault(); // Prevent default form submission
                       navigate(`/userForms/${data.f_id}`);
                     }}
                   >
-                    {data.end_date < currentDate ? "Form Closed" : (!window.localStorage.getItem(`submitted${data.f_id}`) ? "Fill Form" : "Edit Form")}
+                    {(!window.localStorage.getItem(`submitted${data.f_id}`) ? "Fill Form" : "Edit Form")}
                   </button>
                 </td>
                 <td>
                   <button
-                    className="btn btn-primary"
+                    className="btn btn-light"
                     disabled={
                       !window.localStorage.getItem(`submitted${data.f_id}`)
                     }

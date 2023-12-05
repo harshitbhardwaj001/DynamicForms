@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Header from './Header';
 import axios from 'axios';
+import Sidebar from '../components/SidebarU';
 
 function Entry() {
     const [formData, setFormData] = useState({});
@@ -40,13 +41,14 @@ function Entry() {
     console.log(value)
   
     return (
-      <>
-        <Header />
+      <Sidebar>
+        {/* <Header /> */}
         {/* {console.log(questionArray)}; */}
-        <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
-          <div className="d-flex w-50 vh-auto bg-white rounded p-3">
+        <div className="d-flex vh-100 bg-light flex-column justify-content-center align-items-center">
+        <h1 className='mb-5'>{window.localStorage.getItem("DocName")} Form Response</h1>
+          <div className="d-flex w-50 vh-auto bg-dark rounded p-3">
             {formData ? (
-              <table className="table">
+              <table className="table table-dark">
                 <thead>
                   <tr>
                     <th>Question</th>
@@ -75,7 +77,7 @@ function Entry() {
             )}
           </div>
         </div>
-      </>
+      </Sidebar>
     );
 }
 

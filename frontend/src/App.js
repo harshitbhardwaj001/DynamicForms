@@ -13,6 +13,9 @@ import Responses from './Admin/Responses'
 import AdminForm from './Admin/AdminForm'
 import IndividualResponse from './Admin/IndividualResponses'
 import Entry from './User/Entry'
+import ChangePass from './Admin/ChangePass'
+import ActiveForm from './Admin/ActiveForm'
+import ChangePassU from './User/ChangePass'
 
 function App() {
   return (
@@ -22,9 +25,12 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/privateAdmin' element={<PrivateAdmin />}>
           <Route path='adminhome' element={<AdminHome />} />
+          <Route path='changePassword' element={<ChangePass />} />
+          <Route path='activeForms' element={<ActiveForm />} />
         </Route>
         <Route path='/privateUser' element={<PrivateUser />}>
           <Route path='userhome' element={<UserHome />} />
+          <Route path='changePassword' element={<ChangePassU />} />
         </Route>
         <Route path='/form/:id' element={<Form />} />
         <Route path='/response' element={<Userform />} />

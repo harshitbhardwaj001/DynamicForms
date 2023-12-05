@@ -3,10 +3,10 @@
     margin: 0px 0px;
     padding: 5px 0px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: white;
-    color: black;
+    justify-content: center;
+    background-color: black;
+    color: white;
     height: 70px;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .info{
-    color: black;
+    color: white;
     font-size: 22px;
     padding-left: 12px;
     font-family: 'Google Sans', Roboto, Arial, sans-serif;

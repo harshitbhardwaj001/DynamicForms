@@ -32,7 +32,7 @@ function Template() {
             <div className='left'>
                 <span style={{fontSize:"16px", color:"#202124"}}>Start a new form</span>
             </div>
-            <div className='template_right'>
+            {/* <div className='template_right'>
                 <div className='gallery_button'>
                     Template Gallery
                     <UnfoldMoreIcon fontSize='small'/>
@@ -40,16 +40,16 @@ function Template() {
                         <MoreVertIcon fontSize='small'/>
                     </IconButton>
                 </div>
-            </div>
+            </div> */}
         </div>
         <div className='template_body'>
             <div className='card_template'>
             <div className='card' onClick={createForm}>
                 <img src={Blank} alt="no image" className='card_image'/>
             </div>
-            <p className='card_title'>Blank</p>
+            <p className='card_title'>Add New Form</p>
             </div>
-            <div className='card_template'>
+            {/* <div className='card_template'>
             <div className='card'>
                 <img src={Serv} alt="no image" className='card_image'/>
             </div>
@@ -60,10 +60,10 @@ function Template() {
                 <img src={Web} alt="no image" className='card_image'/>                
             </div>
             <p className='card_title1'>Compliant Website <br /> Form</p>
-            </div>
+            </div> */}
         </div>
         <div className='responses'>
-            <Link to="/responses"><button>Responses</button></Link>
+            <Link to="/responses"><button>Form Responses</button></Link>
         </div>
     </div>
   )

@@ -6,7 +6,7 @@ import axios from 'axios';
 // export let isAdmin;
 // export let isUser;
 
-function login() {
+function Login() {
     
     const [values, setValues] = useState({
         username: '',
@@ -30,11 +30,11 @@ function login() {
             .then(res => {
                 if(res.data === "Success-Admin"){
                     window.localStorage.setItem("isAdmin", true);
+                    window.localStorage.setItem("lab_id", "Admin");
                     navigate("/privateAdmin/adminhome");
                 }
                 else if(res.data[0] === "Success-User"){
                     window.localStorage.setItem("isUser", true);
-                    console.log(window.localStorage.getItem("lab_id"));
                     window.localStorage.setItem("lab_id", res.data[1]);
                     navigate("/privateUser/userhome");
                 }
@@ -76,4 +76,4 @@ function login() {
   )
 }
 
-export default login
+export default Login

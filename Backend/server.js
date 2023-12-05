@@ -52,6 +52,36 @@ app.post('/forms', (req, res) => {
     });
 });
 
+const date = new Date();
+
+let day = date.getDate();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+
+// This arrangement can be altered based on how we want the date's format to appear.
+let currentDate = `${year}-${month}-${day}`;
+
+app.get('/active', (req, res) => {
+    const sql = "SELECT * FROM form WHERE `end_date` > ?";
+    db.query(sql, currentDate, (err,data) => {
+        if (err) {
+            return res.json(err);
+        }
+        res.send(data);
+    })
+})
+
+app.get('/inactive', (req, res) => {
+    const sql = "SELECT * FROM form WHERE `end_date` < ?";
+    db.query(sql, currentDate, (err,data) => {
+        if (err) {
+            return res.json(err);
+        }
+        res.send(data);
+    })
+})
+
+
 app.get('/userForms', (req, res) => {
     const sql = "SELECT * FROM form";
     db.query(sql, (err,data) => {
@@ -166,9 +196,23 @@ app.post('/login', (req, res) => {
             else{
                 console.log("Success-User")
                 console.log(data[0])
-                res.json(["Success-User", data[0].lab_id]);
+                res.json(["Success-User", data[0].name]);
             }
         }else{
+            res.json("Failed");
+        }
+    })
+})
+
+
+app.post('/password', (req, res) => {
+    const sql = "UPDATE login SET password = ? WHERE `name` = ?";
+    
+    db.query(sql, [req.body.password, req.body.name], (err, data) => {
+        if(err) {
+            return res.json("Error");
+        }
+        else{
             res.json("Failed");
         }
     })

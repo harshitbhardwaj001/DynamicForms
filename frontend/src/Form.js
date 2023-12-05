@@ -7,7 +7,7 @@ function form() {
   return (
     <>
     <FormHeader />
-    <Centeredtabs />
+    {/* <Centeredtabs /> */}
     <Question_form />
     </>
   )

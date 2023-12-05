@@ -52,9 +52,9 @@ function MainBody() {
           className="mainbody_top_left"
           style={{ fontSize: "16px", fontWeight: "500" }}
         >
-          Recent Forms
+          Recent Form Templates
         </div>
-        <div className="mainbody_top_right">
+        {/* <div className="mainbody_top_right">
           <div
             className="mainbody_top_center"
             style={{ fontSize: "14px", marginRight: "125px" }}
@@ -68,7 +68,7 @@ function MainBody() {
           <IconButton>
             <FolderOpenIcon style={{ fontSize: "16px", color: "black" }} />
           </IconButton>
-        </div>
+        </div> */}
       </div>
       <div className="mainbody_docs">
         {files.map((ele) => (
