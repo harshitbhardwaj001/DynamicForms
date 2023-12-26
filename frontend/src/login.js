@@ -51,8 +51,8 @@ function Login() {
         {/* <div className='d-flex bg-primary position-absolute'>
             <img src={csirlogo} style={{height:"100px",width:"100px" }} class="img-fluid" alt="Responsive image" />
         </div> */}
-      <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
-              <div className='bg-white p-3 rounded w-25'>
+      <div className='d-flex justify-content-center align-items-center bg-light vh-100'>
+              <div className='bg-dark text-light p-3 rounded w-25'>
                   <h2 className='text-center pb-3'><strong>Login</strong></h2>
                   <form action="" onSubmit={handleSubmit}>
                       <div className='mb-3'>

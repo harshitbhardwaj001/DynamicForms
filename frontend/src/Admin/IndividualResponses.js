@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
+import Sidebar from "../components/Sidebar"
 
 function IndividualResponse() {
   const [formData, setFormData] = useState({});
@@ -43,13 +44,13 @@ function IndividualResponse() {
   console.log(value)
 
   return (
-    <>
+    <Sidebar>
       <Header />
       {/* {console.log(questionArray)}; */}
-      <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
-        <div className="d-flex w-50 vh-auto bg-white rounded p-3">
+      <div className="d-flex vh-100 bg-white justify-content-center align-items-center">
+        <div className="d-flex w-50 vh-auto bg-dark rounded p-3">
           {formData ? (
-            <table className="table">
+            <table className="table table-dark">
               <thead>
                 <tr>
                   <th>Question</th>
@@ -78,7 +79,7 @@ function IndividualResponse() {
           )}
         </div>
       </div>
-    </>
+    </Sidebar>
   );
 }
 

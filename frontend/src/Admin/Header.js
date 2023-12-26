@@ -18,7 +18,7 @@ function Header() {
         <div className='header_info'>
             {/* <TemporaryDrawer /> */}
             {/* <img src={csirlogo} style={{height:"40px",width:"40px", marginLeft:"20px" }} className='csir logo' /> */}
-            <div className='info'>
+            <div className='info1'>
                 <strong>Admin Dashboard</strong>
             </div>
             

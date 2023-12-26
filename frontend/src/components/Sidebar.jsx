@@ -34,7 +34,7 @@ const Sidebar = ({children}) => {
             </NavLink>
             {
                 Inventory.map((data, index) => (
-                    <NavLink to={'/adminForm/'+data.f_id} key={index} className="link" activeclassName="active" onClick={() => window.localStorage.setItem("DocName", data.doc_name)}>
+                    <NavLink to={'/privateAdmin/responses/'+data.f_id} key={index} className="link" activeclassName="active" onClick={() => window.localStorage.setItem("DocName", data.doc_name)}>
                         <div className="link_text">{data.doc_name}</div>
                     </NavLink>
                 ))

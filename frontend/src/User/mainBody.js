@@ -54,14 +54,14 @@ function forms() {
                       navigate(`/userForms/${data.f_id}`);
                     }}
                   >
-                    {(!window.localStorage.getItem(`submitted${data.f_id}`) ? "Fill Form" : "Edit Form")}
+                    {(!window.localStorage.getItem(`submitted${data.f_id+ " " + window.localStorage.getItem("lab_id")}`) ? "Fill Form" : "Edit Form")}
                   </button>
                 </td>
                 <td>
                   <button
                     className="btn btn-light"
                     disabled={
-                      !window.localStorage.getItem(`submitted${data.f_id}`)
+                      !window.localStorage.getItem(`submitted${data.f_id+ " " + window.localStorage.getItem("lab_id")}`)
                     }
                     onClick={() => navigate(`/userForm/${data.f_id}/${window.localStorage.getItem("lab_id")}`)}
                   >

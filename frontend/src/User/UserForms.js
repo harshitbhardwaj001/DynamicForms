@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
 import "./userForm.css"
+import Sidebar from "../components/SidebarU";
 
 
 function UserForms() {
@@ -40,7 +41,7 @@ function UserForms() {
       response: jsonData,
     };
 
-    window.localStorage.getItem(`submitted${formData.f_id}`) 
+    window.localStorage.getItem(`submitted${formData.f_id+ " " + window.localStorage.getItem("lab_id")}`) 
   ? axios
       .post(`http://localhost:8081/userResponse/${f_id}/${window.localStorage.getItem("lab_id")}`, postData)
       .then((res) => console.log(res))
@@ -51,13 +52,15 @@ function UserForms() {
       .catch((err) => console.error(err));
 
     window.alert("Form submitted");
-    window.localStorage.setItem(`submitted${formData.f_id}`, true)
+    window.localStorage.setItem(`submitted${formData.f_id+ " " + window.localStorage.getItem("lab_id")}`, true)
   };
 
   return (
-    <>
+    <div className="bg-light">
+    <Sidebar>
+      
       <Header />
-      <div className="d-flex flex-column vh-1000 bg-primary p-5 text-white">
+      <div className="d-flex flex-column vh-1000 bg-light p-5 text-white">
         <h1 className="text-dark mb-3">{formDesc}</h1>
         <h6 className="text-dark mb-5">(*) - Required Fields</h6>
         {formData ? (
@@ -65,7 +68,7 @@ function UserForms() {
             {formData.questions.map((question, index) => (
               <div
                 key={index}
-                className="d-flex justify-content-start mb-4 mt-4"
+                className="d-flex text-dark justify-content-start mb-4 mt-4"
               >
                 <label className="w-50 mb-2 fs-5">
                   {question.questionText}
@@ -111,7 +114,7 @@ function UserForms() {
                 )}
               </div>
             ))}
-            <p className="fs-5">Remarks :</p>
+            <p className="fs-5 text-dark">Remarks :</p>
             <textarea
               maxLength="100"
               type="text"
@@ -121,7 +124,7 @@ function UserForms() {
             />{" "}
             <br />
             <br />
-            <button type="submit" className="px-5 py-2">
+            <button type="submit" className="btn btn-dark">
               Submit
             </button>
           </form>
@@ -129,7 +132,8 @@ function UserForms() {
           <p>Loading form data...</p>
         )}
       </div>
-    </>
+    </Sidebar>
+    </div>
   );
 }
 

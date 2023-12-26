@@ -146,6 +146,39 @@ app.get('/formdata/:f_id', (req, res) => {
     });
 });
 
+app.get('/questions/:f_id', (req, res) => {
+    const f_id = req.params.f_id;
+    const sql = "SELECT `questions` FROM form WHERE `f_id` = ?";
+
+    db.query(sql, [f_id], (err, data) => {
+        if (err) {
+            console.error("Error executing query: ", err);
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
+
+        if (data.length === 0) {
+            return res.status(404).json({ error: "Form not found" });
+        }
+
+        try {
+            const questionsString = data[0].questions;
+
+            console.log("Original JSON String:", questionsString);
+
+            // Attempt to parse JSON
+            const parsedJsonOnce = JSON.parse(questionsString);
+
+            console.log("First Parsed JSON:", parsedJsonOnce);
+
+            res.status(200).json(parsedJsonOnce);
+            
+        } catch (error) {
+            console.error("Unexpected error:", error);
+            return res.status(500).json({ error: "Unexpected error" });
+        }
+    });
+});
+
 app.get('/responsedata/:r_id', (req, res) => {
     var r_id = req.params.r_id;
     const sql = "SELECT * FROM responses WHERE `r_id` = ?";
@@ -204,6 +237,16 @@ app.post('/login', (req, res) => {
     })
 })
 
+app.get('/labs', (req, res) => {
+    const sql = "SELECT `name` FROM login WHERE lab_id > 2";
+    
+    db.query(sql, (err, data) => {
+        if(err) {
+            return res.json("Error");
+        }
+        res.json(data);
+    })
+})
 
 app.post('/password', (req, res) => {
     const sql = "UPDATE login SET password = ? WHERE `name` = ?";

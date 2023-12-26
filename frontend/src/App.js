@@ -16,6 +16,7 @@ import Entry from './User/Entry'
 import ChangePass from './Admin/ChangePass'
 import ActiveForm from './Admin/ActiveForm'
 import ChangePassU from './User/ChangePass'
+import AllResponses from './Admin/allResponses'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/privateAdmin' element={<PrivateAdmin />}>
           <Route path='adminhome' element={<AdminHome />} />
           <Route path='changePassword' element={<ChangePass />} />
+          <Route path='responses/:f_id' element={<AllResponses />} />
           <Route path='activeForms' element={<ActiveForm />} />
         </Route>
         <Route path='/privateUser' element={<PrivateUser />}>
